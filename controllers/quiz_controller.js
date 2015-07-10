@@ -11,3 +11,5 @@ res.render('quizes/answer',{respuesta:'Correcto'});
 res.render('quizes/answer',{respuesta:'Incorrecto'});
 }
 };
+
+
