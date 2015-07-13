@@ -18,7 +18,9 @@
     "express-partials": "^0.3.0",
     "express-session": "^1.11.3",
     "morgan": "^1.3.0",
-    "serve-favicon": "^2.1.3"
+    "sequelize": "^1.7.0",
+    "serve-favicon": "^2.1.3",
+    "sqlite3": "^3.0.8"
   },
   "main": "app.js",
   "repository": {
@@ -36,3 +38,4 @@
   "homepage": "https://github.com/MaresSaucedo/quiz#readme",
   "description": ""
 }
+
