@@ -1,7 +1,8 @@
-<label for="preg" class="rem">Pregunta:</label>
-<input type="text" id="preg" name="quiz[pregunta]" value="<%= quiz.pregunta %>"/> <p>
-<label for="resp" class="rem">Respuesta:</label>
-<input type="text" id="resp" name="quiz[respuesta]" value="<%= quiz.respuesta %>"/> <p>
+<input type="text" id="preg" name="quiz[pregunta]" placeholder="Pregunta" value =<% if (quiz.pregunta == 'Pregunta') {%> "" <% } else { %>
+  "<%= quiz.pregunta %>" <% } %>/><p>
+
+<input type="text" id="resp" name="quiz[respuesta]" placeholder="Respuesta" value =<% if (quiz.respuesta == 'Respuesta') {%> "" <% } else { %>
+  "<%= quiz.respuesta %>" <% } %>/><p>
 
 <select name="quiz[tema]" id="tema" value="<%= quiz.tema %>">
 <option value="" disabled selected>Seleciona tu tema</option>
