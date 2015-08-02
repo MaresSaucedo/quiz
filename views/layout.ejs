@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8"><title> Preguntas </title>
+<meta charset="utf-8">
+<title> Preguntas </title>
 <link rel='stylesheet' href='/stylesheets/style.css' />
 <link rel='stylesheet'
       type='text/css'
-      media='only screen and (min-width: 530px) and (min-device-width: 481px)'
+      media='only screen and (min-width:530px) and (min-device-width:481px)'
       href='/stylesheets/wide.css' />
 <link rel='stylesheet'
       type='text/css'
-      media='only screen and (max-with: 480px)'
+      media='only screen and (max-with:480px)'
       href='/stylesheets/smartphone.css' />
 </head>
 
@@ -21,7 +22,7 @@
     <%}else{%>
       <span class="right"> <%=session.user.username%> <a href="/logout">Logout</a></span>
     <%}%>
-<h2 align="center">Quiz: el juego de las preguntas </h2>
+<h2 align="center"> el juego de las preguntas </h2>
 </header>
 
 <nav class="main" id="n1" role="navigation">
@@ -31,7 +32,7 @@
 
 </nav>
 
-<section class="Main" id="s1">
+<section class="main" id="s1">
 <% if (errors.length) { %>
       <span id='ErrorMsgs'>
         Corregir errores:<br/>

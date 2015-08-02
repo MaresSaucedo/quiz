@@ -27,6 +27,25 @@ app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
+//session timeout
+app.use(function(req, res, next){
+    var actualTime;
+    actualTime = Date.now();
+    if(req.session.user){
+        if((actualTime - 120000) > req.session.lastTime){
+            req.session.lastTime = actualTime;
+            res.redirect('/logout');
+        }else{
+            req.session.lastTime = actualTime;
+            res.locals.session = req.session;
+            next();
+        }
+    }else{
+        next();
+    }
+});
+
+
 // Helpers dinamicos:
 app.use(function(req, res, next) {
 
