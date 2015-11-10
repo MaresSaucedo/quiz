@@ -39,28 +39,57 @@ var Quiz = sequelize.import(path.join(__dirname,'quiz'));
 var comment_path = path.join(__dirname,'comment');
 var Comment = sequelize.import(comment_path);
 
+
+// Importar definicion de la tabla Comment
+var user_path = path.join(__dirname,'user');
+var User = sequelize.import(user_path);
+
+
 Comment.belongsTo(Quiz);
 Quiz.hasMany(Comment);
 
 
-exports.Quiz = Quiz; // exportar definicion de table Quiz
+//exports.Quiz = Quiz; // exportar definicion de table Quiz
+//exports.Comment = Comment;
+// los quizes pertenecen a un usuario registrado
+Quiz.belongsTo(User);
+User.hasMany(Quiz);
+// exportar tablas
+exports.Quiz = Quiz;
 exports.Comment = Comment;
-
-
+exports.User = User;
 // sequelize.sync() crea e inicializa tabla con preguntas en DB
 sequelize.sync().then(function() {
   // success(..) ejecuta el manejador una vez creada la tabla
-  Quiz.count().then(function(count){
+//  Quiz.count().then(function(count){
+
+  User.count().then(function (count){
+
     if(count === 0) { //la tabla se inicializa solo si está vacía
-      Quiz.create({ pregunta: 'Capital de Italia',
-                    respuesta: 'Roma',
-                    tema: 'Geografia'
-                  });
-      Quiz.create({ pregunta: 'Capital de Portuga',
-                    respuesta: 'Lisboa',
-                    tema: 'Geografia'
-                  })
-       .then(function(){console.log('Base de datos inicializada')});
+//      Quiz.create({ pregunta: 'Capital de Italia',
+//                    respuesta: 'Roma',
+//                    tema: 'Geografia'
+      User.bulkCreate(
+        [ {username: 'admin',   password: '1234', isAdmin: true},
+          {username: 'pepe',   password: '5678'} // el valor por defecto de isAdmin es 'false'
+          ]
+//                  });
+//      Quiz.create({ pregunta: 'Capital de Portuga',
+//                    respuesta: 'Lisboa',
+//                   tema: 'Geografia'
+//                  })
+//       .then(function(){console.log('Base de datos inicializada')});
+      ).then(function(){
+        console.log('Base de datos (tabla user) inicializada');
+        Quiz.count().then(function (count){
+          if(count === 0) {   // la tabla se inicializa solo si está vacía
+            Quiz.bulkCreate(
+              [ {pregunta: 'Matriz Ejemplo',   respuesta: 'ejemplo', tema: 'Predial y Catastro', UserId: 2} // estos quizes pertenecen al usuario pepe (2)
+              ]
+            ).then(function(){console.log('Base de datos (tabla quiz) inicializada')});
+          };
+        });
+      });
     };
   });
 });

@@ -5,17 +5,28 @@
 </form>
 
 
-<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
+<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo Renglon</button></a></p>
 
-<p><strong>Comentarios:</strong></p>
+<p><strong>Matriz de Indicadores para Resultados:</strong></p>
+<div id="wrapper">
+<TABLE BORDER id="matri" class="t">
+<TR>
+<TD> ID </TD><TD>Jer. Objetivos </TD><TD> Resumen Narrativo </TD><TD> Indicadores de Desempeño </TD> <TD> Fuentes y medio de verificación </TD> <TD> Supuestos </TD>
+</TR>
 <%for(index in quiz.Comments){%>
-	<%if(quiz.Comments[index].publicado || session.user){%>
-		<p>- <%=quiz.Comments[index].texto%>
-			<%if(session.user && !quiz.Comments[index].publicado){%>
-				<a href="/quizes/<%= quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish"><button>Publicar</button></a>
-			<%}%>
-		</p>
+	<%if(quiz.Comments[index].publicado){%>
+                <TR>
+		<TD> <%=quiz.Comments[index].texto%> </TD><TD> <%=quiz.Comments[index].texto1%> </TD><TD> <%=quiz.Comments[index].texto2%> </TD><TD> <%=quiz.Comments[index].texto3%> </TD><TD> <%=quiz.Comments[index].texto4%> </TD><TD> <%=quiz.Comments[index].texto5%> </TD>
+		</TR>
+	<%} else if(session.user && (session.user.isAdmin || (session.user && quiz.UserId === session.user.id))){%>
+                <TR>
+		<TD> <%=quiz.Comments[index].texto%> </TD><TD> <%=quiz.Comments[index].texto1%> </TD><TD> <%=quiz.Comments[index].texto2%> </TD><TD> <%=quiz.Comments[index].texto3%> </TD><TD> <%=quiz.Comments[index].texto4%> </TD><TD> <%=quiz.Comments[index].texto5%> </TD>
+		<TD> <a href="/quizes/<%= quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish"><button>Publicar</button></a></TD><TD>
+		</TR>
+
 	<%}%>
+
 <%}%>
 
-
+</TABLE>
+</div>

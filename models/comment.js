@@ -10,7 +10,27 @@ module.exports = function(sequelize, DataTypes) {
       publicado: {
       	type: DataTypes.BOOLEAN,
       	defaultValue: false
-       }
+       },
+      texto1: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: {msg: "-> Falta Comentario1"}}
+      },
+      texto2: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: {msg: "-> Falta Comentario2"}}
+      },
+      texto3: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: {msg: "-> Falta Comentario3"}}
+      },
+      texto4: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: {msg: "-> Falta Comentario4"}}
+      },
+      texto5: {
+        type: DataTypes.STRING,
+        validate: { notEmpty: {msg: "-> Falta Comentario5"}}
+      }
     }
   );
 }
