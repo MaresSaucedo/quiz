@@ -41,7 +41,7 @@ exports.autenticar = function(login, password, callback) {
 //    if(users[login]){
 //        if(password === users[login].password){
 //            callback(null, users[login]);
-	models.User.find({
+	models.Users.find({
         where: {
             username: login
         }
@@ -65,7 +65,7 @@ exports.edit = function(req, res) {
 
 // GET /user
 exports.new = function(req, res) {
-    var user = models.User.build( // crea objeto user
+    var user = models.Users.build( // crea objeto user
         {username: "", password: ""}
     );
     res.render('user/new', {user: user, errors: []});
