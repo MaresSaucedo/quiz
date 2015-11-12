@@ -44,6 +44,8 @@ var Comment = sequelize.import(comment_path);
 var user_path = path.join(__dirname,'user');
 var User = sequelize.import(user_path);
 
+Quiz.belongsTo(User);
+User.hasMany(Quiz);
 
 Comment.belongsTo(Quiz);
 Quiz.hasMany(Comment);
@@ -52,8 +54,6 @@ Quiz.hasMany(Comment);
 //exports.Quiz = Quiz; // exportar definicion de table Quiz
 //exports.Comment = Comment;
 // los quizes pertenecen a un usuario registrado
-Quiz.belongsTo(User);
-User.hasMany(Quiz);
 // exportar tablas
 exports.Quiz = Quiz;
 exports.Comment = Comment;
