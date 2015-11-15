@@ -72,7 +72,7 @@ sequelize.sync().then(function() {
       User.bulkCreate(
         [ {username: 'admin',   password: '1234', isAdmin: true},
           {username: 'pepe',   password: '5678'} // el valor por defecto de isAdmin es 'false'
-          ]
+          ],{ fields: ['username'] }
 //                  });
 //      Quiz.create({ pregunta: 'Capital de Portuga',
 //                    respuesta: 'Lisboa',
