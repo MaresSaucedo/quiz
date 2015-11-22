@@ -1,21 +1,62 @@
+<head>
+<meta charset="utf-8"><title>San Luis de la Paz, Gto.</title>
+<link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
 <form method="get" action="/quizes/<%= quiz.id %>/answer">
 <%= quiz.pregunta %> <p>
-<input type="text" name="respuesta" placeholder="Respuesta" value="" />
+<input type="text" name="respuesta" placeholder="Bandera" value="" />
 <input type="submit" value="Enviar">
 </form>
 
+<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo Renglon</button></a></p>
 
-<p><a href="/quizes/<%= quiz.id %>/comments/new"><button>Nuevo comentario</button></a></p>
-
-<p><strong>Comentarios:</strong></p>
+<div id="wrapper">
+<table class="tabla_encabezado" border="1">
+    <caption><strong>Matriz de Indicadores para Resultados:</strong></caption>
+    <thead>
+     <tr>
+      <th class="th1"> Resumen Narrativo </th>
+      <th class="th2"> Indicador  </th>
+      <th class="th3"> Medios de Verificación</th>
+      <th class="th4"> Supuestos </th>
+      <th class="th5"> Tipo / Dimensión / Frecuencia </th>
+      <th class="th6"> Método de cálculo</th>
+     </tr>
+    </thead>
+   </table>
+ <table>
+ <tbody>
+  <tr>
+   <td colspan="10">
+    <div class="div_interna">
+     <table class="tabla_interna">
 <%for(index in quiz.Comments){%>
-	<%if(quiz.Comments[index].publicado || session.user){%>
-		<p>- <%=quiz.Comments[index].texto%>
-			<%if(session.user && !quiz.Comments[index].publicado){%>
-				<a href="/quizes/<%= quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish"><button>Publicar</button></a>
-			<%}%>
-		</p>
+	<%if(quiz.Comments[index].publicado){%>
+                <TR>
+		<TD class="td1"> <%=quiz.Comments[index].texto%> </TD><TD class="td2"> <%=quiz.Comments[index].texto1%> </TD><TD class="td3"> <%=quiz.Comments[index].texto2%> </TD><TD class="td4"> <%=quiz.Comments[index].texto3%> </TD><TD class="td5"> <%=quiz.Comments[index].texto4%> </TD><TD class="td6"> <%=quiz.Comments[index].texto5%> </TD>
+		</TR>
+	<%} else if(session.user && !quiz.Comments[index].publicado){%>
+                <TR>
+		<TD class="td1"> <%=quiz.Comments[index].texto%> </TD><TD class="td2"> <%=quiz.Comments[index].texto1%> </TD><TD class="td3"> <%=quiz.Comments[index].texto2%> </TD><TD class="td4"> <%=quiz.Comments[index].texto3%> </TD><TD class="td5"> <%=quiz.Comments[index].texto4%> </TD><TD class="td6"> <%=quiz.Comments[index].texto5%> </TD>
+		<TD> <a href="/quizes/<%= quiz.id %>/comments/<%=quiz.Comments[index].id%>/publish"><button>Publicar</button></a></TD><TD>
+		</TR>
+
 	<%}%>
+
 <%}%>
+      <tr >
+       <td class="td1"> Dato 1</td>
+       <td class="td2"> Dato 2</td>
+       <td class="td3"> Dato 3</td>
+       <td class="td4"> Dato 1</td>
+       <td class="td5"> Dato 2</td>
+       <td class="td6"> Dato 3</td>
+      </tr>
+     </table>
+    </div>
+   </td>
+  </tr>
+ </tbody>
+</table>
 
 

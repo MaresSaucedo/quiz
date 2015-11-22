@@ -25,6 +25,11 @@ exports.new = function(req, res) {
 exports.create = function(req, res) {
   var comment = models.Comment.build(
       { texto: req.body.comment.texto,
+        texto1: req.body.comment.texto1,
+        texto2: req.body.comment.texto2,
+        texto3: req.body.comment.texto3,
+        texto4: req.body.comment.texto4,
+        texto5: req.body.comment.texto5,
         QuizId: req.params.quizId
         });
 

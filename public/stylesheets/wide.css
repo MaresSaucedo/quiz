@@ -1,8 +1,42 @@
+.tabla_encabezado{
+ border-collapse: collapse;
+ border: 1px solid #666666;
+ font: normal 11px verdana, arial, helvetica, sans-serif;
+ text-align: left;
+ word-wrap: break-word;
+}
+.div_interna{
+ height:350px;
+ overflow:auto; // Aquí esta el truco de poder mover la tabla sin mover el encabezado
+ margin:0 auto;
+}
+.tabla_interna{
+ border-collapse: collapse;
+ border: 1px solid #666666;
+ font: normal 11px verdana, arial, helvetica, sans-serif;
+ text-align: left;
+ word-wrap: break-word;
+}
+
+.th1 {width:150px;word-wrap: break-word; }
+.th2 {width:150px;word-wrap: break-word; }
+.th3 {width:150px;word-wrap: break-word; }
+.th4 {width:150px;word-wrap: break-word; }
+.th5 {width:150px;word-wrap: break-word; }
+.th6 {width:150px;word-wrap: break-word; }
+
+.td1 {width:150px;word-wrap: break-word; }
+.td2 {width:150px;word-wrap: break-word; }
+.td3 {width:150px;word-wrap: break-word; }
+.td4 {width:150px;word-wrap: break-word; }
+.td5 {width:150px;word-wrap: break-word; }
+.td6 {width:150px;word-wrap: break-word; }
+
 body             { backgroud: #999;}
 #page-wrap:after { content: "Wide Layout"; }
 nav              { float: left; width: 15%; height: 500px;}
 nav span         { margin: 0px 100px 0px 0px;}
-section          { float: right; width: 80%; height: 500px;}
+section          { float: right; width: 80%; height: 500p}
 footer           { clear: both; display: block;}
 IMG.imgcenter    { display: block; margin-left: auto; margin-right: auto;border:none; }
 .rem             { visibility:visible;}
